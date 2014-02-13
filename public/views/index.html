@@ -1,3 +1,88 @@
-<section data-ng-controller="IndexController">
-	<h1>This is the home view</h1>
-</section>
+	 <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">Gbase</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/algolia/algoliasearch-client-js#algolia-search-api-client-for-javascript" target="_blank">Client Docs</a></li>
+                    <li><a href="https://www.algolia.com/doc" target="_blank">Algolia Docs</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-controller="SearchController">
+        <div class="row">
+            <div class="col-md-9"> </div>
+            <div class="col-md-3">
+                <form role="search" ng-submit="search()">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" ng-model="queryTerm">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div ng-repeat="fo in facetDefs" ng-init="parentIndex = $index;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{fo.title}}</div>
+                        <div class="panel-body">
+                           <div><div ui-slider min="0" max="100" ng-model="x"></div></div>
+                            <ul ng-repeat="fv in fo.values">
+                                <li class="{{fo.title}}">
+                                    <a ng-style="{'background-color':fv.title}" ng-click="toggleFacet(fo.title, fv.title)">{{fv.title}} ({{fv.count}})</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Selected facets here</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-repeat="item in searchResults">
+                        <div class="col-md-3">
+                            <!-- This layout from zappos..-->
+                            <a href="http://www.gbase.com/gear/{{item.slug}}" class="product product-8062947 style-2249276 first r0-0-0" data-style-id="2249276" data-product-id="8062947">
+                                <img src="http://cdn1.gbase.com/usercontent/{{item.images.thumb}}" alt="The North Face &#45; Hedgehog Guide GTX&#174;" class="productImg" />
+                                <span class="brandName">{{item.make}}</span>
+                                <span class="productName">{{item.model}}</span>
+                                <span class="productPrice">
+                                    <span class="price">{{item.price}}</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="position:fixed; bottom:100px; right:100px; width:200px; height:300px; border:solid 1px #e6e6e6; font-size:.8em">
+                Logging<br/>
+                <div ng-repeat="row in log">
+                    {{row.msg}}
+                </div>
+       </div>
+    </div>
+

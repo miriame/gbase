@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/lib/jquery/jquery.js"></script>
+
 <!-- Angular JS -->
 <script type="text/javascript" src="/lib/angular/angular.min.js"></script>
 <script type="text/javascript" src="/lib/angular-cookies/angular-cookies.min.js"></script>
@@ -9,6 +11,10 @@
 <script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script type="text/javascript" src="/lib/angular-ui-utils/ui-utils.min.js"></script>
 
+
+<!-- Algolia -->
+<script src="/lib/algoliasearch-custom.js"></script>
+
 <!-- Application Init -->
 <script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/config.js"></script>
@@ -17,11 +23,10 @@
 
 <!-- Application Services -->
 <script type="text/javascript" src="/js/services/global.js"></script>
-<script type="text/javascript" src="/js/services/articles.js"></script>
+<script type="text/javascript" src="/js/services/algolia.js"></script>
 
 <!-- Application Controllers -->
-<script type="text/javascript" src="/js/controllers/articles.js"></script>
-<script type="text/javascript" src="/js/controllers/index.js"></script>
+<script type="text/javascript" src="/js/controllers/search.js"></script>
 <script type="text/javascript" src="/js/controllers/header.js"></script>
 <script type="text/javascript" src="/js/init.js"></script>
 
@@ -30,3 +35,9 @@
     <!-- Livereload script rendered -->
     <script type="text/javascript", src="http://" + req.host + ":35729/livereload.js"></script>
 {% endif %}
+
+
+
+
+<!-- <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="lib/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.js"></script> -->
