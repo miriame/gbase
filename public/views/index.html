@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-9"> </div>
             <div class="col-md-3">
-                <form role="search" ng-submit="search()">
+                <form role="search" ng-submit="query()">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search" name="q" ng-model="queryTerm">
                         <div class="input-group-btn">
@@ -43,7 +43,7 @@
                            <div><div ui-slider min="0" max="100" ng-model="x"></div></div>
                             <ul ng-repeat="fv in fo.values">
                                 <li class="{{fo.title}}">
-                                    <a ng-style="{'background-color':fv.title}" ng-click="toggleFacet(fo.title, fv.title)">{{fv.title}} ({{fv.count}})</a>
+                                    <a ng-style="{'background-color':fv.title}" ng-click="filter(fo.title, fv.title)">{{fv.title}} ({{fv.count}})</a>
                                 </li>
 
                             </ul>
@@ -57,6 +57,7 @@
                     <div class="col-md-12">
                         <ol class="breadcrumb">
                             <li><a href="#">Selected facets here</a></li>
+                            <li ng-repeat="facet in facets" ng-click="removeFacet(facet)">{{facet.name}}</li>
                         </ol>
                     </div>
                 </div>
